@@ -1,15 +1,17 @@
-from PIL import Image, ImageFilter
+from PIL import ImageFilter, Image
 
 class ImageProcessor:
     def __init__(self, image):
         self.image = image
 
-    def apply_black_and_white_filter(self):
+    def apply_sharpen_filter(self):
         """
-        Преобразовать изображение в чёрно-белое.
+        Применить фильтр резкости к изображению.
         """
         if self.image:
-            self.image = self.image.convert("L")  # Перевод в режим оттенков серого
+            if self.image.mode not in ("RGB", "RGBA"):
+                self.image = self.image.convert("RGB")
+            self.image = self.image.filter(ImageFilter.SHARPEN)
         else:
             print("Изображение не загружено!")
 

@@ -5,7 +5,7 @@ def main_menu():
     print("\n--- Меню работы с изображением ---")
     print("1. Конвертировать изображение в формат PNG")
     print("2. Повернуть изображение на 45 градусов")
-    print("3. Преобразовать изображение в чёрно-белое")
+    print("3. Применить фильтр резкости")
     print("4. Добавить рамку к изображению")
     print("5. Сохранить изображение")
     print("6. Показать изображение")
@@ -14,7 +14,7 @@ def main_menu():
 
 def main():
     # Исходное изображение передаётся в коде
-    initial_image_path = "image_5.jpg"  # Укажите путь к вашему изображению
+    initial_image_path = "path/to/your/image.jpg"  # Укажите путь к вашему изображению
     handler = ImageHandler(initial_image_path)
     handler.load_image()
     processor = ImageProcessor(handler.get_image())
@@ -42,8 +42,8 @@ def main():
 
         elif choice == "3":
             if processor.image:
-                processor.apply_black_and_white_filter()
-                print("Изображение преобразовано в чёрно-белое.")
+                processor.apply_sharpen_filter()
+                print("Фильтр резкости применён.")
             else:
                 print("Изображение не загружено.")
 
